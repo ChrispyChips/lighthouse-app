@@ -5,5 +5,6 @@ module.exports = merge(common, {
  mode: 'production',
  optimization: {
    usedExports: true
- }
+ },
+ devtool: 'source-map'
 });
