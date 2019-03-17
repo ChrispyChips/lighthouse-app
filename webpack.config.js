@@ -42,7 +42,12 @@ let generateScriptSources = () => {
 }
 
 module.exports = {
+  mode: 'development',
   entry: generateScriptSources(),
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  },
   plugins: [
     new CleanWebpackPlugin()
   ].concat(htmlPlugins),

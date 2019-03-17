@@ -1,7 +1,7 @@
 require('../styles/index.scss');
 import _ from 'lodash';
 
-console.log('This is index.js')
+console.log('This is index.js sss')
 
 function component() {
     var element = document.createElement('div');
