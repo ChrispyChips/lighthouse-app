@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 let generateHtmlPlugins = (templateDir) => {
   //generateHtmlPlugins() triggers HtmlWebpackPlugin for each page in pages we have in src/pages
@@ -46,10 +47,12 @@ module.exports = {
   entry: generateScriptSources(),
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    hot: true
   },
   plugins: [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',
