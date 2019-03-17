@@ -1,11 +1,12 @@
 const path = require('path');
 const fs = require('fs')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 //Array of pages in ./src/pages
 const pages = fs.readdirSync(path.resolve(__dirname, 'src/pages')).filter(fileName => fileName.endsWith('.html'));
 
-//Trigger HtmlWebpackPlugin for each page in pages array
-function generateHtmlPlugins (templateDir) {
+let generateHtmlPlugins = (templateDir) => {
+  //Trigger HtmlWebpackPlugin for each page in pages array
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
@@ -22,14 +23,33 @@ function generateHtmlPlugins (templateDir) {
 }
 const htmlPlugins = generateHtmlPlugins('./src/pages');
 
+
+let generateScriptSources = () => {
+  //Returns object of all our script entries based of the scripts name
+  /*
+  {
+      index: './src/index.js',
+      about: './src/about.js',
+      contacts: './src/contacts.js'
+  }
+  */
+  const scripts = fs.readdirSync(path.resolve(__dirname, 'src/scripts')).filter(fileName => fileName.endsWith('.js'));
+  let myEntries = {};
+  for (let i = 0; i < scripts.length; i++) {
+      myEntries[scripts[i].split('.')[0]] = './src/scripts/'+scripts[i];
+  }
+  return myEntries;
+}
+console.log(generateScriptSources());
+
+
 module.exports = {
-  entry: {
-   app: './src/index.js',
-   print: './src/print.js'
-  },
-  plugins: [].concat(htmlPlugins),
+  entry: generateScriptSources(),
+  plugins: [
+    new CleanWebpackPlugin()
+  ].concat(htmlPlugins),
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
