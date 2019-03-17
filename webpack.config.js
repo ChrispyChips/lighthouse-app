@@ -4,12 +4,12 @@ const fs = require('fs')
 //Array of pages in ./src/pages
 const pages = fs.readdirSync(path.resolve(__dirname, 'src/pages')).filter(fileName => fileName.endsWith('.html'));
 
-//Trigger HtmlWebpackPlugin for each page 
+//Trigger HtmlWebpackPlugin for each page in pages array
 function generateHtmlPlugins (templateDir) {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
-
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
+    console.log('item:', item);
     // Split names and extension
     const parts = item.split('.')
     const name = parts[0]
@@ -20,7 +20,6 @@ function generateHtmlPlugins (templateDir) {
     })
   })
 }
-
 const htmlPlugins = generateHtmlPlugins('./src/pages');
 
 module.exports = {
