@@ -44,6 +44,9 @@ let generateScriptSources = () => {
 
 module.exports = {
   mode: 'development',
+  optimization: {
+    usedExports: true
+  },
   entry: generateScriptSources(),
   devtool: 'inline-source-map',
   devServer: {
