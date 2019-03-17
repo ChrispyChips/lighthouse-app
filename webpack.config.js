@@ -2,21 +2,21 @@ const path = require('path');
 const fs = require('fs')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-//Array of pages in ./src/pages
-const pages = fs.readdirSync(path.resolve(__dirname, 'src/pages')).filter(fileName => fileName.endsWith('.html'));
-
 let generateHtmlPlugins = (templateDir) => {
-  //Trigger HtmlWebpackPlugin for each page in pages array
+  //generateHtmlPlugins() triggers HtmlWebpackPlugin for each page in pages we have in src/pages
+  const pages = fs.readdirSync(path.resolve(__dirname, 'src/pages')).filter(fileName => fileName.endsWith('.html'));
+
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
-    console.log('item:', item);
     // Split names and extension
-    const parts = item.split('.')
-    const name = parts[0]
-    const extension = parts[1]
+    const parts = item.split('.');
+    const name = parts[0];
+    const extension = parts[1];
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
+      chunks: [`${name}`],
+      inject: true,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`)
     })
   })
