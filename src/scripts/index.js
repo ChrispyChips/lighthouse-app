@@ -1,3 +1,4 @@
+require('../styles/index.scss');
 import _ from 'lodash';
 
 console.log('This is index.js')
