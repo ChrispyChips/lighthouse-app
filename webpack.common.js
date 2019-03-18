@@ -1,7 +1,11 @@
 const path = require('path');
 const fs = require('fs')
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const devMode = process.env.NODE_ENV !== 'production';
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 let generateHtmlPlugins = (templateDir) => {
   //generateHtmlPlugins() triggers HtmlWebpackPlugin for each page in pages we have in src/pages
@@ -44,9 +48,25 @@ let generateScriptSources = () => {
 
 module.exports = {
   entry: generateScriptSources(),
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    })
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',
@@ -55,20 +75,13 @@ module.exports = {
   module: {
      rules: [
        {
-         test: /\.css$/,
-         use: [
-           'style-loader',
-           'css-loader'
-         ]
-       },
-       {
-         test: /\.scss$/,
-         use: [
-           "style-loader", // creates style nodes from JS strings
-           "css-loader", // translates CSS into CommonJS
-           "sass-loader" // compiles Sass to CSS, using Node Sass by default
-         ]
-       },
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
+      },
        {
          test: /\.(png|svg|jpg|gif)$/,
          use: [

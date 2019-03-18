@@ -1,4 +1,10 @@
+$color: grey;
+$green: green;
+
+i {
+  color: $green;
+}
 body {
-  background-color: green;
+  background-color: $color;
   color: #000000;
 }

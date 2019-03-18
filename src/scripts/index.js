@@ -1,4 +1,5 @@
 require('../styles/index.scss');
+
 import { nothing } from '../components/math.js';
 
 console.log('This is index.js')
