@@ -4,8 +4,6 @@ const webpack = require('webpack');
 const devMode = process.env.NODE_ENV !== 'production';
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 let generateHtmlPlugins = (templateDir) => {
   //generateHtmlPlugins() triggers HtmlWebpackPlugin for each page in pages we have in src/pages
@@ -22,7 +20,9 @@ let generateHtmlPlugins = (templateDir) => {
       filename: `${name}.html`,
       chunks: [`${name}`],
       inject: true,
-      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`)
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      enabled: true, // register all partials from html-webpack-plugin, defaults to `false`
+      prefix: "html" // where to look for htmlWebpackPlugin output. default is "html"
     })
   })
 }
@@ -46,18 +46,9 @@ let generateScriptSources = () => {
   return myEntries;
 }
 
+
 module.exports = {
   entry: generateScriptSources(),
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -73,8 +64,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-     rules: [
-       {
+    rules: [
+      // {
+      //   test: /\.hbs$/,
+      //   use: [{
+      //     loader: "handlebars-loader",
+      //     options: {helperDirs: path.resolve(__dirname, "src/helpers")}
+      //   }]
+      // },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -82,12 +80,12 @@ module.exports = {
           'sass-loader',
         ],
       },
-       {
-         test: /\.(png|svg|jpg|gif)$/,
-         use: [
-           'file-loader'
-         ]
-       }
-     ]
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+         'file-loader'
+        ]
+      }
+    ]
    }
 };
