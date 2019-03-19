@@ -1,4 +1,4 @@
-# Lighthouse Performance Web App
+# Weboack multiple page build - Lighthouse Performance Web App
 > This is a page builder to easily generate a multiple page static website. Out of the box pages built by this framework score a 100% in all google lighthouse metrics. One of the main reasons I started building this framework is to try beat the google page rating system as a challenge.
 
 ## Introduction
