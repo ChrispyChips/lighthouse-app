@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const devMode = process.env.NODE_ENV !== 'production';
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let generateHtmlPlugins = (templateDir) => {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -16,7 +17,6 @@ let generateHtmlPlugins = (templateDir) => {
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       chunks: [`${name}`],
-      inject: true,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       templateParameters:require('./src/data/data.json')
     })
@@ -46,12 +46,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    })
+    new CopyWebpackPlugin([
+        {from:'src/assets',to:'assets'}
+    ])
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',

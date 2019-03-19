@@ -2,13 +2,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <title>Home page</title>
   </head>
   <body>
-    <h2>Index .hbs</h2>
-    {{> testPart}}
-    <p> <strong>{{somethingFromJSON}}</strong> </p>
-    <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> </p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>Index .hbs</h2>
+          {{> testPart}}
+          <p> <strong>{{somethingFromJSON}}</strong> </p>
+          <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> </p>
+          <h2>Lets get bootstrap up in here</h2>
+          <button class="btn btn-success">Im a button</button>
+          <img src="assets/favicon.png"/>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
