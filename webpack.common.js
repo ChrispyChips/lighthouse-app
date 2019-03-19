@@ -48,7 +48,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
         {from:'src/assets',to:'assets'}
-    ])
+    ]),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',
