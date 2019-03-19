@@ -66,7 +66,8 @@ module.exports = {
         use: [{
           loader: 'handlebars-loader',
           options: {
-              helperDirs: path.resolve(__dirname, 'src/helpers')
+              helperDirs: path.resolve(__dirname, 'src/helpers'),
+              partialDirs: path.resolve(__dirname, 'src/partials')
           }
         }]
       },
