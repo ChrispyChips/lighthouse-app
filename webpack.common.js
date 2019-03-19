@@ -53,12 +53,7 @@ module.exports = {
       // both options are optional
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        handlebarsLoader: {}
-      }
-    }),
+    })
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',
@@ -66,14 +61,13 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.hbs$/,
-      //   use: [{
-      //     loader: "handlebars-loader",
-      //     options: {helperDirs: path.resolve(__dirname, "./src/helpers")}
-      //   }]
-      // },
-      { test: /\.hbs$/, loader: "handlebars-loader" },
+      {
+        test: /\.hbs$/,
+        use: [{
+          loader: "handlebars-loader",
+          options: {helperDirs: path.resolve(__dirname, "./src/helpers")}
+        }]
+      },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
