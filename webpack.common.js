@@ -62,10 +62,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.hbs$/,
+        test: /\.hbs/,
         use: [{
-          loader: "handlebars-loader",
-          options: {helperDirs: path.resolve(__dirname, "./src/helpers")}
+          loader: 'handlebars-loader',
+          options: {
+              helperDirs: path.resolve(__dirname, 'src/helpers')
+          }
         }]
       },
       {
@@ -83,8 +85,5 @@ module.exports = {
         ]
       }
     ]
-  },
-  node: {
-      fs: "empty" // avoids error messages
   }
 };
