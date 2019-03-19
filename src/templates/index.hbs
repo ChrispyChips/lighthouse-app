@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home page</title>
+    {{> head}}
+    <title>Page builder framework</title>
+    <meta name="description" content="Attempting to 100% score Google lightouse, with SCSS / Bootstrap / ES6 / Webpack">
+    <meta property="og:description" content="My purpose is for testing">
+    <meta name="og:title" property="og:title" content="Attempting to 100% score Google lightouse, with SCSS / Bootstrap / ES6 / Webpack">
+    <!--Make this the pages url: ie: www.example.com/index.html-->
+    <meta property="og:url" content="localhost:8080">
   </head>
   <body>
 
@@ -15,7 +21,6 @@
           <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> </p>
           <h2>Lets get bootstrap up in here</h2>
           <button class="btn btn-success">Im a button</button>
-          <img src="assets/favicon.png"/>
         </div>
       </div>
     </div>
