@@ -18,9 +18,7 @@ let generateHtmlPlugins = (templateDir) => {
       chunks: [`${name}`],
       inject: true,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      //@todo try to not use pages anymore, use template hbs files  https://github.com/jantimon/html-webpack-plugin/blob/master/docs/template-option.md
-      enabled: true, // register all partials from html-webpack-plugin, defaults to `false`
-      prefix: "html" // where to look for htmlWebpackPlugin output. default is "html"
+      templateParameters:require('./src/data/data.json')
     })
   })
 }
@@ -66,8 +64,9 @@ module.exports = {
         use: [{
           loader: 'handlebars-loader',
           options: {
-              helperDirs: path.resolve(__dirname, 'src/helpers'),
-              partialDirs: path.resolve(__dirname, 'src/partials')
+            helperDirs: path.resolve(__dirname, 'src/helpers'),
+            partialDirs: path.resolve(__dirname, 'src/partials'),
+            knownHelpersOnly: false
           }
         }]
       },

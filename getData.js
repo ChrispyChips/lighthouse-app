@@ -1,8 +1,16 @@
 const axios = require('axios');
-axios.get('http://127.0.0.1:8887/data.json').then((response)=>{
+var fs = require('fs');
+
+axios.get('http://127.0.0.1:8887/initialData.json').then((response) => {
   let data = response.data;
-  global.data = response.data;
-  console.log(global.data);
+  let json = JSON.stringify(data);
+  fs.writeFile('./src/data/data.json', json, 'utf8', (error) => {
+    if(error){
+      console.log('[write output]: could not write to ./scr/data/data.json: '+error);
+    }else{
+      console.log('[write output]: successfully wrote to ./scr/data/data.json');
+    }
+  });
 }).catch((error) => {
   console.log(error);
 });
