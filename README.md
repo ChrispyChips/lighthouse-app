@@ -2,7 +2,7 @@
 > This is a page builder to easily generate a multiple page static website. Out of the box pages built by this framework score a 100% in all google lighthouse metrics. One of the main reasons I started building this framework is to try beat the google page rating system as a challenge.
 
 ## Introduction
-> By feeding the framework with a JSON file (or not), (perhaps from your favourite headless CMS?) this JSON file / files, are then dynamically added to handlebars for pre-compiled usage (server side). The idea is that to update some content in your statically generate site you can just go update your headless cms and save all content changes. CICD will eventually in future versions then trigger your content changes on website automatically without developer influence
+> By feeding the framework with a JSON file (or not), (perhaps from your favourite headless CMS?) this JSON file / files, are then dynamically added to handlebars for pre-compiled usage (In node therefore not read and replaced front end with js client side). The idea is that to update some content in your statically generate site you can just go update your headless cms and save all content changes. CICD will eventually in future versions then trigger your content changes on website automatically without developer influence
 
 ## Instructions
 > **clone out / download repo**
