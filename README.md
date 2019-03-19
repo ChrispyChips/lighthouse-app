@@ -17,13 +17,11 @@
   "pages": [
     {
       "page": "index",
-      "content": "Lorem ipsem",
-      "galleryImages":['','','']
+      "content": "Lorem ipsem"
     },
     {
       "page": "test",
-      "content": "Lorem ipsem",
-      "galleryImages":['','','']
+      "content": "Lorem ipsem"
     }
   ]
 }
