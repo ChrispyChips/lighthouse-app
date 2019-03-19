@@ -6,9 +6,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let generateHtmlPlugins = (templateDir) => {
-  //generateHtmlPlugins() triggers HtmlWebpackPlugin for each page in pages we have in src/pages
-  const pages = fs.readdirSync(path.resolve(__dirname, 'src/pages')).filter(fileName => fileName.endsWith('.html'));
-
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
@@ -21,13 +18,13 @@ let generateHtmlPlugins = (templateDir) => {
       chunks: [`${name}`],
       inject: true,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      //@todo try to not use pages anymore, use template hbs files  https://github.com/jantimon/html-webpack-plugin/blob/master/docs/template-option.md
       enabled: true, // register all partials from html-webpack-plugin, defaults to `false`
       prefix: "html" // where to look for htmlWebpackPlugin output. default is "html"
     })
   })
 }
-const htmlPlugins = generateHtmlPlugins('./src/pages');
-
+const htmlPlugins = generateHtmlPlugins('./src/templates');
 
 let generateScriptSources = () => {
   //Returns object of all our script entries based of the scripts name
@@ -46,7 +43,6 @@ let generateScriptSources = () => {
   return myEntries;
 }
 
-
 module.exports = {
   entry: generateScriptSources(),
   plugins: [
@@ -57,7 +53,12 @@ module.exports = {
       // both options are optional
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    })
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        handlebarsLoader: {}
+      }
+    }),
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',
@@ -69,9 +70,10 @@ module.exports = {
       //   test: /\.hbs$/,
       //   use: [{
       //     loader: "handlebars-loader",
-      //     options: {helperDirs: path.resolve(__dirname, "src/helpers")}
+      //     options: {helperDirs: path.resolve(__dirname, "./src/helpers")}
       //   }]
       // },
+      { test: /\.hbs$/, loader: "handlebars-loader" },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -87,5 +89,8 @@ module.exports = {
         ]
       }
     ]
-   }
+  },
+  node: {
+      fs: "empty" // avoids error messages
+  }
 };

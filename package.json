@@ -20,10 +20,11 @@
   },
   "homepage": "https://github.com/ChrispyChips/lighthouse-app#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "lodash": "^4.17.11"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
+    "handlebars": "^4.1.1",
+    "handlebars-loader": "^1.7.1",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "csv-loader": "^3.0.2",
