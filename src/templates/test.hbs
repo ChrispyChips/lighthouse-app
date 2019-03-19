@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     {{> head}}
-    <title>Test page</title>
+    <title>{{page}} page</title>
     <meta name="description" content="My purpose is for testing">
     <meta property="og:description" content="My purpose is for testing">
     <meta name="og:title" property="og:title" content="My purpose is for testing">
@@ -11,6 +11,18 @@
     <meta property="og:url" content="localhost:8080/test.html">
   </head>
   <body>
-    <h2>Test .hbs</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h2>This is the {{page}} page as per unique data object per page!</h2>
+          <p>{{content}}<p>
+          {{> testPart}}
+          <p> <strong>{{somethingFromJSON}}</strong> </p>
+          <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> </p>
+          <h2>Lets get bootstrap up in here</h2>
+          <button>Im a button</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

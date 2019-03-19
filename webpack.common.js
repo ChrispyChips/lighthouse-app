@@ -18,7 +18,7 @@ let generateHtmlPlugins = (templateDir) => {
       filename: `${name}.html`,
       chunks: [`${name}`],
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      templateParameters:require('./src/data/data.json')
+      templateParameters:require(`./src/data/${name}.json`)
     })
   })
 }
