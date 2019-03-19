@@ -1,10 +1,1 @@
-$color: grey;
-$green: green;
-
-i {
-  color: $green;
-}
-body {
-  background-color: $color;
-  color: #000000;
-}
+@import 'global.scss';
