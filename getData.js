@@ -3,8 +3,6 @@ var fs = require('fs');
 
 axios.get('http://127.0.0.1:8887/initialData.json').then((response) => {
   let data = response.data;
-
-  console.log(data);
   data.pages.forEach((page) => {
     let json = JSON.stringify(page);
     fs.writeFile('./src/data/'+page.page+'.json', json, 'utf8', (error) => {

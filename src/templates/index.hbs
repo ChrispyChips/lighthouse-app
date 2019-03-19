@@ -13,13 +13,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h2>This is the {{page}} page as per unique data object per page!</h2>
-          <p>{{content}}<p>
-          {{> testPart}}
-          <p> <strong>{{somethingFromJSON}}</strong> </p>
-          <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> </p>
-          <h2>Lets get bootstrap up in here</h2>
-          <button>Im a button</button>
+          <h2>Have a look in templates/index.hbs , that is what you are seeing, bootstrap included</h2>
+          <p><strong>{{page}}</strong> : is from data/index.json because of our npm run getData script</p>
+          <p><strong>{{content}}</strong> : is from data/index.json because of our npm run getData script<p>
+          <p>{{> testPart}} : is from partials/testPart.hbs<p>
+          <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> : is from helpers/testHelper.js</p>
         </div>
       </div>
     </div>
