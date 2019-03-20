@@ -8,7 +8,8 @@ module.exports = merge(common, {
  plugins: [
    new WorkboxPlugin.GenerateSW({
     clientsClaim: true,
-    skipWaiting: true
+    skipWaiting: true,
+    swDest: 'service-worker.js',
    })
  ]
 });
