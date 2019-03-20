@@ -9,3 +9,4 @@ require("jquery");
 require('bootstrap');
 require('popper.js');
 require('bootstrap/scss/bootstrap.scss');
+require('./../styles/global-styles.scss');
