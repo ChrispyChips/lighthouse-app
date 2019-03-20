@@ -36,7 +36,7 @@ let generateScriptSources = () => {
   const scripts = fs.readdirSync(path.resolve(__dirname, 'src/scripts')).filter(fileName => fileName.endsWith('.js'));
   let myEntries = {};
   for (let i = 0; i < scripts.length; i++) {
-      myEntries[scripts[i].split('.')[0]] = './src/scripts/'+scripts[i];
+      myEntries[scripts[i].split('.')[0]] = ["babel-polyfill", './src/components/global-dependencies.js', './src/scripts/'+scripts[i]];
   }
   return myEntries;
 }
