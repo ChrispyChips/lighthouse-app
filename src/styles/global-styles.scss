@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400');
 $font: 'Roboto', sans-serif;
+$fontColour: #383838;
 
 body {
   background-color: #FFFFFF;
-  color: #000000;
+  color: $fontColour;
   font-family: $font;
 }
