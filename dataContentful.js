@@ -17,10 +17,7 @@ client
   .then((entries)=>{
     entries.items.forEach((page)=>{
       const pageName = page.fields.pageName;
-      // Create the json page filenamed after the page, ie ./src/data/index.json for the index page
-      // let pageData = [];
-      // pageData.push(page.fields);
-      // pageData = JSON.stringify(pageData);
+      // Create the json page/s filenamed after the page/s, ie ./src/data/index.json for the index page
       let pageData = JSON.stringify(page.fields);
       fs.writeFile('./src/data/'+pageName+'.json', pageData, 'utf8', (error) => {
         if(error){
