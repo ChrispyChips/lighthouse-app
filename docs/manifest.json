@@ -3,7 +3,7 @@
   "name": "Page building app",
   "background_color": "#FFFFFF",
   "theme_color": "#00897b",
-  "start_url": "./",
+  "start_url": "./index.html",
   "display": "standalone",
   "icons": [
     {
