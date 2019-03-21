@@ -64,10 +64,6 @@ module.exports = {
           to: path.resolve(__dirname, './docs/assets/')
       }
     ]),
-    new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: "./src/sw.js",
-      swDest: "sw.js"
-    }),
     new CopyWebpackPlugin([
       {
           from: path.resolve(__dirname, './src/manifest.json'),
@@ -80,7 +76,32 @@ module.exports = {
             quality: '95-100'
         }
     }),
-  ].concat(htmlPlugins),
+  ].concat(htmlPlugins).concat(
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: "./src/sw.js",
+      include: [
+        /\.html$/,
+        /\.js$/,
+        /\.css$/,
+        /\.ico$/,
+        /\.json$/,
+        /\.png/,
+        /\.svg$/,
+        /\.gif$/,
+        /\.woff$/,
+        /\.ttf$/,
+        /\/workbox.*\/.*$/,
+        /css.*\.css$/,
+        /fonts.*\.(svg|eot|ttf|woff)$/,
+        /i18n.*\.json$/,
+        /img.*\.(svg|png|gif|jpeg|jpg)$/,
+      ],
+      exclude: [
+        /sw.js$/
+      ],
+      swDest: "sw.js"
+    })
+  ),
   output: {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'docs')
