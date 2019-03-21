@@ -110,6 +110,12 @@ module.exports = {
         use: [{
             loader: 'file-loader'
         }]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [{
+            loader: 'file-loader'
+        }]
       }
     ]
   }
