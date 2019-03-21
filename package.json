@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "getData": "node getData.js && npm run start",
+    "getContentful": "node dataContentful.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
@@ -32,6 +33,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
+    "contentful": "^7.5.0",
     "copy-webpack-plugin": "^5.0.1",
     "css-loader": "^2.1.1",
     "csv-loader": "^3.0.2",

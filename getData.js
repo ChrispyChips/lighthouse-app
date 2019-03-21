@@ -1,6 +1,7 @@
-const axios = require('axios');
+// const axios = require('axios');
 var fs = require('fs');
 
+// I use the free chrome web server plugin to locally test a json file here into the build
 axios.get('http://127.0.0.1:8887/initialData.json').then((response) => {
   let data = response.data;
   data.pages.forEach((page) => {
