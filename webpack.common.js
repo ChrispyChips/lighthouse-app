@@ -5,9 +5,10 @@ const devMode = process.env.NODE_ENV !== 'production';
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyPlugin = require('copy-webpack-plugin');
+
 
 
 let generateHtmlPlugins = (templateDir) => {
@@ -61,6 +62,16 @@ module.exports = {
       {
           from: path.resolve(__dirname, './src/assets/'),
           to: path.resolve(__dirname, './docs/assets/')
+      }
+    ]),
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: "./src/sw.js",
+      swDest: "sw.js"
+    }),
+    new CopyWebpackPlugin([
+      {
+          from: path.resolve(__dirname, './src/manifest.json'),
+          to: path.resolve(__dirname, './docs/manifest.json')
       }
     ]),
     new ImageminPlugin({
