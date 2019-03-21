@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {{> head}}
-    <title>{{page}} page</title>
+    <!--Global head files for example tag manager etc? Untested-->
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/favicon.png" sizes="16x16" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index page</title>
     <meta name="description" content="Attempting to 100% score Google lightouse, with SCSS / Bootstrap / ES6 / Webpack">
     <meta property="og:description" content="My purpose is for testing">
     <meta name="og:title" property="og:title" content="Attempting to 100% score Google lightouse, with SCSS / Bootstrap / ES6 / Webpack">
@@ -14,14 +17,15 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h2>Have a look in templates/index.hbs , that is what you are seeing, bootstrap included</h2>
-          <p><strong>{{page}}</strong> : is from data/index.json because of our npm run getData script</p>
-          <p><strong>{{content}}</strong> : is from data/index.json because of our npm run getData script<p>
-          <p>{{> testPart}} : is from partials/testPart.hbs<p>
-          <p> <strong>{{# testHelper}}{{/ testHelper}}</strong> : is from helpers/testHelper.js</p>
+          <p><strong>index</strong> : is from data/index.json because of our npm run getData script</p>
+          <p><strong>Content from json for index</strong> : is from data/index.json because of our npm run getData script<p>
+          <p><strong>I am pulled in from a partial</strong>
+ : is from partials/testPart.hbs<p>
+          <p> <strong>i am pulled inside a helper</strong> : is from helpers/testHelper.js</p>
           <img src="./assets/favicon.png" />
         </div>
       </div>
     </div>
 
-  </body>
+  <script type="text/javascript" src="index.f17720ef2ea17b2275bc.js"></script></body>
 </html>

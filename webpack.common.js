@@ -6,6 +6,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyPlugin = require('copy-webpack-plugin');
+
+
 let generateHtmlPlugins = (templateDir) => {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
@@ -46,13 +50,25 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([
-        {from:'src/assets',to:'assets'}
-    ]),
+    // new CopyWebpackPlugin([
+    //     {from:'src/assets',to:'assets'}
+    // ]),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+          from: path.resolve(__dirname, './src/assets/'),
+          to: path.resolve(__dirname, './docs/assets/')
+      }
+    ]),
+    new ImageminPlugin({
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        pngquant: {
+            quality: '95-100'
+        }
+    }),
   ].concat(htmlPlugins),
   output: {
     filename: '[name].[hash].js',
@@ -88,12 +104,6 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-         'file-loader'
-        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
