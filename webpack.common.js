@@ -55,8 +55,8 @@ module.exports = {
     //     {from:'src/assets',to:'assets'}
     // ]),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new CopyWebpackPlugin([
       {

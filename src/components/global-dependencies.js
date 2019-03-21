@@ -5,10 +5,10 @@ myEntries[scripts[i].split('.')[0]] = ["babel-polyfill", './src/components/globa
 */
 
 //If you want to get fancy you can remove jquery / bootstrap / popper if you arent going to use them. Or even just include specific bootstrap modules over the entire package. For now I leave it in.
+require('bootstrap/scss/bootstrap.scss');
 require("jquery");
 require('bootstrap');
 require('popper.js');
-require('bootstrap/scss/bootstrap.scss');
 require('./../styles/global-styles.scss');
 
 if (process.env.NODE_ENV === 'production') {
