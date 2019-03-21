@@ -13,22 +13,19 @@ By feeding the framework with a JSON file (or not), (perhaps from your favourite
 
 > **npm run getData** : This does 2 things. First it runs a file in node, then it runs *npm run start*. The first part is most important this file getData.js will be where you make your api call to your data endpoint. In the example its a link to a local file I run with the chrome web server. Either way your endpoint needs to replace this "http://127.0.0.1:8887/initialData.json" in the getData.js file . The data src itself needs to be in a very specific format; one root object called pages which is an array containing all your page object data. This object where for example, "page": "index", is then referencable through handlebars during precompile time!
 
+> If you want to use dynamic partials then when this runs you want to make sure your src/data folder contains all the project data files as unique files
+> src/data
+> - index.json
+> - test.json
 
-```json
-{
-  "pages": [
-    {
-      "page": "index",
-      "content": "Lorem ipsem"
-    },
-    {
-      "page": "test",
-      "content": "Lorem ipsem"
-    }
-  ]
-}
-```
+> because this matches your page / script structure
+> src/scripts
+> - index.js
+> - test.js
 
+> src/templates
+> - index.hbs
+> - test.hbs
 
 > **npm run start** : Since the ./src/data folder will now show your new json file / files in a developer server localhost instance that opens your browser to view the root directory. Which is set to /docs for github pages but can easily be changed in the "output" object to /dist or anything else in the webpack.common.js and webpack.dev.js files.
 
