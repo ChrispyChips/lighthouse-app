@@ -7,3 +7,8 @@ body {
   color: $fontColour;
   font-family: $font;
 }
+
+a {
+  color: $fontColour;
+  text-decoration: underline;
+}
