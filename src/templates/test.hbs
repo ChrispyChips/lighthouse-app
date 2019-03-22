@@ -9,24 +9,41 @@
     <!--Make this the pages final url: ie: www.example.com/test.html-->
     <meta property="og:url" content="https://chrispychips.github.io/lighthouse-app/{{pageName}}.html">
   </head>
+
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a href="/" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a href="#" class="nav-link">Test</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h2>Have a look in templates/test.hbs , that is what you are seeing, bootstrap included</h2>
           <p><strong>{{pageName}}</strong> : is from data/index.json because of our npm run getData script</p>
-          
           <hr>
           <p><strong>The following content piece comes from a JSON file (npm run getData) created from getData.js.
           </br>The data is in markdown form so i use a custom helper to convert and print HTML</strong></p>
           {{#markdown content}}{{/markdown}}
           <hr>
-
           <p>{{> testPart}} : is from partials/testPart.hbs<p>
           <p><strong>{{# testHelper}}{{/ testHelper}}</strong> : is from helpers/testHelper.js</p>
           <img class="img-fluid" src="{{image.fields.file.url}}?w=1140&q=50&fit=fill" alt="{{image.fields.description}}" title="{{image.fields.description}}"/>
         </div>
       </div>
     </div>
+
   </body>
 </html>

@@ -69,7 +69,6 @@ module.exports = {
           to: path.resolve(__dirname, './docs/manifest.json')
       }
     ]),
-
   ].concat(
     htmlPlugins,
     new MiniCssExtractPlugin({
@@ -114,16 +113,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      },
-      {
         test: /\.hbs/,
         use: [{
           loader: 'handlebars-loader',
@@ -133,6 +122,16 @@ module.exports = {
             knownHelpersOnly: false
           }
         }]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.(sa|sc|c)ss$/,

@@ -9,10 +9,14 @@ $fontColour: #383838;
 * {
   font-display: block;
 }
+nav {
+  margin-bottom: 20px;
+}
 body {
   background-color: #FFFFFF;
   color: $fontColour;
   font-family: $font;
+  padding-bottom: 20px;
 }
 
 a {

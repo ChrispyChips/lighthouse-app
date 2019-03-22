@@ -7027,10 +7027,14 @@ This file is then included into webpack main entry for each page at build time.
 * {
   font-display: block; }
 
+nav {
+  margin-bottom: 20px; }
+
 body {
   background-color: #FFFFFF;
   color: #383838;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif;
+  padding-bottom: 20px; }
 
 a {
   color: #383838;
