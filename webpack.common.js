@@ -65,8 +65,8 @@ module.exports = {
   ].concat(
     htmlPlugins,
     new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+      filename: devMode ? '[name].[hash].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].[hash].css' : '[id].[hash].css',
     }),
     new ImageminPlugin({
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -129,7 +129,7 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ],
