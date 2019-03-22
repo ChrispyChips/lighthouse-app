@@ -9,8 +9,6 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyPlugin = require('copy-webpack-plugin');
 
-
-
 let generateHtmlPlugins = (templateDir) => {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
@@ -51,13 +49,6 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    // new CopyWebpackPlugin([
-    //     {from:'src/assets',to:'assets'}
-    // ]),
-    new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    }),
     new CopyWebpackPlugin([
       {
           from: path.resolve(__dirname, './src/assets/'),
@@ -70,15 +61,22 @@ module.exports = {
           to: path.resolve(__dirname, './docs/manifest.json')
       }
     ]),
+
+  ].concat(
+    htmlPlugins,
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    }),
     new ImageminPlugin({
         test: /\.(jpe?g|png|gif|svg)$/i,
         pngquant: {
             quality: '95-100'
         }
     }),
-  ].concat(htmlPlugins).concat(
     new WorkboxWebpackPlugin.InjectManifest({
       swSrc: "./src/sw.js",
+      swDest: "sw.js",
       include: [
         /\.html$/,
         /\.js$/,
@@ -98,8 +96,7 @@ module.exports = {
       ],
       exclude: [
         /sw.js$/
-      ],
-      swDest: "sw.js"
+      ]
     })
   ),
   output: {

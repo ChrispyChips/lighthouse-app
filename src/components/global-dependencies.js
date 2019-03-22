@@ -11,6 +11,7 @@ require('bootstrap');
 require('popper.js');
 require('./../styles/global-styles.scss');
 
+
 if (process.env.NODE_ENV === 'production') {
   //Registers service workers when production build
   if ('serviceWorker' in navigator) {
