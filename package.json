@@ -6,7 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "getData": "node getData.js && npm run start",
-    "getContentful": "node dataContentful.js && npm run start",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },

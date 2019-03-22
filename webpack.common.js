@@ -1,3 +1,4 @@
+//Plugin and variable declarations
 const path = require('path');
 const fs = require('fs')
 const webpack = require('webpack');
@@ -9,11 +10,15 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyPlugin = require('copy-webpack-plugin');
 
+/*
+generateHtmlPlugins returns multiple HtmlWebpackPlugin instances, one for each of our pages in src/templates.
+Because of this i have to concat the plugin instances at the end of webpack plugins. Which also means any plugins that need to run after pages are processed must be added AFTER the HtmlWebpackPlugin
+See my plugins concat() below in config.
+*/
 let generateHtmlPlugins = (templateDir) => {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
-    // Split names and extension
     const parts = item.split('.');
     const name = parts[0];
     const extension = parts[1];
@@ -27,15 +32,17 @@ let generateHtmlPlugins = (templateDir) => {
 }
 const htmlPlugins = generateHtmlPlugins('./src/templates');
 
-let generateScriptSources = () => {
-  //Returns object of all our script entries based of the scripts name
-  /*
+/*
+generateScriptSources returns object of all our script entries based of the scripts name so we can give this object as webpack entry points
   {
       index: './src/index.js',
       about: './src/about.js',
       contacts: './src/contacts.js'
   }
-  */
+
+if you do not want babel-polyfills included on each page as it is by default remove it from the array ["babel-polyfill", './src/components/global-dependencies.js', './src/scripts/'+scripts[i]];
+*/
+let generateScriptSources = () => {
   const scripts = fs.readdirSync(path.resolve(__dirname, 'src/scripts')).filter(fileName => fileName.endsWith('.js'));
   let myEntries = {};
   for (let i = 0; i < scripts.length; i++) {
@@ -43,6 +50,7 @@ let generateScriptSources = () => {
   }
   return myEntries;
 }
+
 
 module.exports = {
   entry: generateScriptSources(),

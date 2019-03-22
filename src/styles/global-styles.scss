@@ -1,3 +1,9 @@
+/*
+Styles included across all pages because this file is already included in src/components/global-dependencies.js.
+This file is then included into webpack main entry for each page at build time.
+*/
+
+//Check ./src/partials/head for where i included the font Roboto into our head files
 $font: 'Roboto', sans-serif;
 $fontColour: #383838;
 * {

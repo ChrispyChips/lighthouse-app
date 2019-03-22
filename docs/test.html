@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--Global head files for example tag manager etc? Untested-->
+    <!--Global head files for all html pages generated-->
     <meta charset="UTF-8">
     <link rel="icon" href="assets/favicon.png" sizes="16x16" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,31 +12,37 @@
     <meta name="description" content="Cloned page Basic Page type">
     <meta property="og:description" content="Cloned page Basic Page type">
     <meta name="og:title" property="og:title" content="A cloned page of same content type Basic Page">
-    <!--Make this the pages url: ie: www.example.com/index.html-->
-    <meta property="og:url" content="localhost:8080">
-  <link href="test.019fd372c19f4ac37183.css" rel="stylesheet"></head>
+    <!--Make this the pages final url: ie: www.example.com/test.html-->
+    <meta property="og:url" content="https://chrispychips.github.io/lighthouse-app/test.html">
+  <link href="test.a0841bd69865d55a4082.css" rel="stylesheet"></head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <h2>Have a look in templates/test.hbs , that is what you are seeing, bootstrap included</h2>
-          <p><strong>test</strong> : is from data/test.json because of our npm run getData script</p>
-          <p><strong>Dolor sit amet, __consectetur adipiscing elit__. Morbi condimentum elit viverra, elementum odio nec, tristique nulla. Maecenas ante augue, placerat id pharetra in, mattis sed tellus. Nam vitae egestas felis. Maecenas volutpat nisi eu sem sagittis, nec consequat dui fringilla. Curabitur elementum urna sapien, ac bibendum massa vulputate a. Duis aliquet non mi vel finibus. [Sed ut sem mi](https://chrispychips.github.io/Framework-Home-Page/ &quot;Link Test&quot;). Mauris sit amet porttitor nulla. Cras eu ex cursus, pretium ligula eget, vulputate massa. Etiam a felis in ex cursus facilisis at sed ipsum. Donec commodo ultrices velit, eu blandit velit molestie quis. Integer eleifend metus eget odio tempus, varius accumsan mi gravida. Donec sodales sagittis diam, nec tempus nisi rutrum et. Suspendisse sit amet arcu et enim congue ultricies. Cras fringilla dolor a ligula faucibus, vel gravida enim porttitor. Phasellus at tempor quam.
+          <p><strong>test</strong> : is from data/index.json because of our npm run getData script</p>
+          
+          <hr>
+          <p><strong>The following content piece comes from a JSON file (npm run getData) created from getData.js.
+          </br>The data is in markdown form so i use a custom helper to convert and print HTML</strong></p>
+          <p>Dolor sit amet, <strong>consectetur adipiscing elit</strong>. Morbi condimentum elit viverra, elementum odio nec, tristique nulla. Maecenas ante augue, placerat id pharetra in, mattis sed tellus. Nam vitae egestas felis. Maecenas volutpat nisi eu sem sagittis, nec consequat dui fringilla. Curabitur elementum urna sapien, ac bibendum massa vulputate a. Duis aliquet non mi vel finibus. <a href="https://chrispychips.github.io/Framework-Home-Page/" title="Link Test">Sed ut sem mi</a>. Mauris sit amet porttitor nulla. Cras eu ex cursus, pretium ligula eget, vulputate massa. Etiam a felis in ex cursus facilisis at sed ipsum. Donec commodo ultrices velit, eu blandit velit molestie quis. Integer eleifend metus eget odio tempus, varius accumsan mi gravida. Donec sodales sagittis diam, nec tempus nisi rutrum et. Suspendisse sit amet arcu et enim congue ultricies. Cras fringilla dolor a ligula faucibus, vel gravida enim porttitor. Phasellus at tempor quam.</p>
+<ol>
+<li>Test</li>
+<li>list</li>
+<li>Display</li>
+</ol>
+<p>Morbi vitae pulvinar neque. Maecenas sit amet efficitur ante, eget volutpat nibh. Nam pretium mi vel ligula tristique, quis pellentesque felis consectetur. Phasellus maximus arcu elit, eget vehicula ante placerat varius. Curabitur vel enim varius, pharetra purus at, fermentum magna. Phasellus egestas molestie turpis. Aenean eget interdum lorem, et euismod risus.</p>
+<p>Phasellus finibus leo at nunc pellentesque, mattis malesuada felis malesuada. Nullam a pellentesque elit. In facilisis lobortis lectus id pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque mi nec ipsum vulputate, sed elementum dolor iaculis. Nullam efficitur mauris sed diam facilisis interdum. Cras auctor tempor ipsum nec pretium. Vivamus a arcu mollis, vehicula mi ut, malesuada mauris.</p>
+<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum orci libero, lobortis efficitur dui nec, iaculis commodo tellus. Fusce sed imperdiet lectus. Etiam vitae sagittis leo, vel maximus lacus. Etiam nec scelerisque odio. Etiam eget viverra lectus. Fusce maximus, eros eget interdum consectetur, ligula felis suscipit ex, vitae posuere nisi enim a urna. Nam tincidunt, tortor vitae gravida egestas, mi leo suscipit nunc, id tempor leo sem quis lacus. Donec in eros vitae mi ullamcorper placerat vel eu sem.</p>
+          <hr>
 
-1. Test
-2. list
-3. Display
-
-Morbi vitae pulvinar neque. Maecenas sit amet efficitur ante, eget volutpat nibh. Nam pretium mi vel ligula tristique, quis pellentesque felis consectetur. Phasellus maximus arcu elit, eget vehicula ante placerat varius. Curabitur vel enim varius, pharetra purus at, fermentum magna. Phasellus egestas molestie turpis. Aenean eget interdum lorem, et euismod risus.
-
-Phasellus finibus leo at nunc pellentesque, mattis malesuada felis malesuada. Nullam a pellentesque elit. In facilisis lobortis lectus id pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque mi nec ipsum vulputate, sed elementum dolor iaculis. Nullam efficitur mauris sed diam facilisis interdum. Cras auctor tempor ipsum nec pretium. Vivamus a arcu mollis, vehicula mi ut, malesuada mauris.
-
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum orci libero, lobortis efficitur dui nec, iaculis commodo tellus. Fusce sed imperdiet lectus. Etiam vitae sagittis leo, vel maximus lacus. Etiam nec scelerisque odio. Etiam eget viverra lectus. Fusce maximus, eros eget interdum consectetur, ligula felis suscipit ex, vitae posuere nisi enim a urna. Nam tincidunt, tortor vitae gravida egestas, mi leo suscipit nunc, id tempor leo sem quis lacus. Donec in eros vitae mi ullamcorper placerat vel eu sem.</strong> : is from data/test.json because of our npm run getData script<p>
-          <p><strong>I am pulled in from a partial</strong>
+          <p><!--Illurstrative purposes only, remove if necessary-->
+<strong>I am pulled in from a partial</strong>
  : is from partials/testPart.hbs<p>
-          <p> <strong>i am pulled inside a helper</strong> : is from helpers/testHelper.js</p>
+          <p><strong>i am pulled inside a helper</strong> : is from helpers/testHelper.js</p>
+          <img class="img-fluid" src="//images.ctfassets.net/aa6ykz6kypbo/3WPZXGeojTyK0NO9Yd4S47/c293fcb785cf31673e154c5b7068c707/beetle.jpg?w=1140&q=50&fit=fill" alt="Beetle image" title="Beetle image"/>
         </div>
       </div>
     </div>
-  <script type="text/javascript" src="test.019fd372c19f4ac37183.js"></script></body>
+  <script type="text/javascript" src="test.a0841bd69865d55a4082.js"></script></body>
 </html>
