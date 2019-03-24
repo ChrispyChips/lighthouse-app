@@ -12,6 +12,17 @@ require('bootstrap');
 require('popper.js');
 require('./../styles/global-styles.scss');
 
+//Navigation code for setting active link wont work unless you have the dataset attribute on body tag matching page url ie: <body data-pageName='index.html'>
+const pageName = document.querySelector('body').dataset.pagename;
+let listItems = document.querySelectorAll('.navbar ul li');
+listItems.forEach((item) => {
+  let anchor = item.querySelector('a');
+  let href = anchor.getAttribute('href').replace('/', '');
+  if(href.indexOf(pageName) !== -1){
+    anchor.classList.add('active');
+  }
+});
+
 //if you dont want the service worker and Progressive Web App functionality then just remove this code below.
 //The code only runs on production mode "npm run build"
 if (process.env.NODE_ENV === 'production') {
