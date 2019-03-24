@@ -5,7 +5,7 @@
     <meta name="description" content="{{description}}">
     <meta property="og:description" content="{{description}}">
     <meta name="og:title" property="og:title" content="{{title}}">
-    <!--Make this the pages url: ie: www.example.com/index.html-->
+    <!--Make this the pages final url: ie: www.example.com/{{pageName}}.html-->
     <meta property="og:url" content="https://chrispychips.github.io/lighthouse-app/{{pageName}}.html">
   </head>
 
@@ -14,19 +14,25 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h2>Have a look in templates/index.hbs , that is what you are seeing, bootstrap included</h2>
-          <p><strong>{{pageName}}</strong> : is from data/index.json because of our npm run getData script</p>
+          <h2>Have a look in templates/{{pageName}}.hbs, that is what you are seeing, bootstrap included</h2>
+          <p>Bootstrap is completely optional and can easily be removed from src/components/global-dependencies.js</p>
           <hr>
-          <p><strong>The following content piece comes from a JSON file (npm run getData) created from getData.js.
-          </br>The data is in markdown form so i use a custom helper to convert and print HTML</strong></p>
-          {{#markdown content}}{{/markdown}}
+          <p><strong>{{pageName}}</strong></p>
+          <p>Is from data/{{pageName}}.json because of our npm run getData script (dont run unless you have data or you will lose the demo temp files, if you do just clean the src/template/ files of references to data)</p>
           <hr>
-          <p>{{> testPart}} : is from partials/testPart.hbs<p>
-          <p><strong>{{# testHelper}}{{/ testHelper}}</strong> : is from helpers/testHelper.js</p>
+          <!--I can use img cropping parametres because of contentful image api-->
           <img class="img-fluid" src="{{image.fields.file.url}}?w=1140&q=50&fit=fill" alt="{{image.fields.description}}" title="{{image.fields.description}}"/>
+          <p>The src for this image was dynamically generated from a JSON file! src/data/{{pageName}}.json</p>
+          <hr>
+          <p><strong>{{# testHelper}}{{/ testHelper}}</strong></p>
+          <p>Is from helpers/testHelper.js</p>
+          <hr>
+          <p><strong>The following content piece comes from a JSON file (npm run getData) - (dont run unless you have data or you will lose these files) created from getData.js.
+          </br>The data is in markdown form so i use a custom helper to convert and print HTML</strong></p>
+          <hr>
+          {{#markdown content}}{{/markdown}}
         </div>
       </div>
     </div>
-
   </body>
 </html>

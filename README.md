@@ -1,7 +1,7 @@
 # Webpack multiple page build - Lighthouse Performance Web App
 This is a page builder to easily generate a multiple page static website. Out of the box pages built by this framework score a 100% in all google lighthouse metrics.
 
-Link below is the built but ugly and mostly unstyled framework example built entirely with this framework and hosted right here on github, feel free to run lighthouse on it:
+Link below is the built but ugly and mostly unstyled framework example pages built entirely with this framework and hosted right here on github, feel free to run lighthouse on it:
 
 https://chrispychips.github.io/lighthouse-app/
 
@@ -35,7 +35,6 @@ You can choose to build pages in two ways, after cloning the repo and installing
   6. UNTESTED ADVICE: If you are smart you can probably build the .js, .hbs and .scss files dynamically in getData.js based off your json structure
   7. Adjust the src/manifest.json file to be more inline with your website / app. This is related to the service workers and Progressive Web App functionality.
   8. Once finished developing your styles / functionality; In your command line run: **npm run build** which will output all files for you as to host anywhere you like. The files are found in /docs by default or can be change to /dist or any other output folder by editing the webpack.common.js file and webpack.prod.js file replacing all instances of /docs with /dist.
-
 
 ## Technologies
 > Webpack / SCSS / Bootstrap / Handlebars / JS ES6 / AJAX / HTML / CSS

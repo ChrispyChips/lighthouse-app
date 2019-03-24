@@ -7,7 +7,7 @@
     <meta name="og:title" property="og:title" content="A cloned page of same content type Basic Page">
     <!--Make this the pages final url: ie: www.example.com/test.html-->
     <meta property="og:url" content="https://chrispychips.github.io/lighthouse-app/test.html">
-  <link href="test.80d9a2dc76dc4a964c77.css" rel="stylesheet"></head>
+  <link href="test.edb8fbb0faf3bf1ea8ac.css" rel="stylesheet"></head>
 
   <body data-pageName='test'>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,11 +29,22 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h2>Have a look in templates/test.hbs , that is what you are seeing, bootstrap included</h2>
-          <p><strong>test</strong> : is from data/index.json because of our npm run getData script</p>
+          <h2>Have a look in templates/test.hbs, that is what you are seeing, bootstrap included</h2>
+          <p>Bootstrap is completely optional and can easily be removed from src/components/global-dependencies.js</p>
           <hr>
-          <p><strong>The following content piece comes from a JSON file (npm run getData) created from getData.js.
+          <p><strong>test</strong></p>
+          <p>Is from data/test.json because of our npm run getData script (dont run unless you have data or you will lose the demo temp files, if you do just clean the src/template/ files of references to data)</p>
+          <hr>
+          <!--I can use img cropping parametres because of contentful image api-->
+          <img class="img-fluid" src="//images.ctfassets.net/aa6ykz6kypbo/3WPZXGeojTyK0NO9Yd4S47/c293fcb785cf31673e154c5b7068c707/beetle.jpg?w=1140&q=50&fit=fill" alt="Beetle image" title="Beetle image"/>
+          <p>The src for this image was dynamically generated from a JSON file! src/data/test.json</p>
+          <hr>
+          <p><strong>i am pulled inside a helper</strong></p>
+          <p>Is from helpers/testHelper.js</p>
+          <hr>
+          <p><strong>The following content piece comes from a JSON file (npm run getData) - (dont run unless you have data or you will lose these files) created from getData.js.
           </br>The data is in markdown form so i use a custom helper to convert and print HTML</strong></p>
+          <hr>
           <p>Dolor sit amet, <strong>consectetur adipiscing elit</strong>. Morbi condimentum elit viverra, elementum odio nec, tristique nulla. Maecenas ante augue, placerat id pharetra in, mattis sed tellus. Nam vitae egestas felis. Maecenas volutpat nisi eu sem sagittis, nec consequat dui fringilla. Curabitur elementum urna sapien, ac bibendum massa vulputate a. Duis aliquet non mi vel finibus. <a href="https://chrispychips.github.io/Framework-Home-Page/" title="Link Test">Sed ut sem mi</a>. Mauris sit amet porttitor nulla. Cras eu ex cursus, pretium ligula eget, vulputate massa. Etiam a felis in ex cursus facilisis at sed ipsum. Donec commodo ultrices velit, eu blandit velit molestie quis. Integer eleifend metus eget odio tempus, varius accumsan mi gravida. Donec sodales sagittis diam, nec tempus nisi rutrum et. Suspendisse sit amet arcu et enim congue ultricies. Cras fringilla dolor a ligula faucibus, vel gravida enim porttitor. Phasellus at tempor quam.</p>
 <ol>
 <li>Test</li>
@@ -43,12 +54,8 @@
 <p>Morbi vitae pulvinar neque. Maecenas sit amet efficitur ante, eget volutpat nibh. Nam pretium mi vel ligula tristique, quis pellentesque felis consectetur. Phasellus maximus arcu elit, eget vehicula ante placerat varius. Curabitur vel enim varius, pharetra purus at, fermentum magna. Phasellus egestas molestie turpis. Aenean eget interdum lorem, et euismod risus.</p>
 <p>Phasellus finibus leo at nunc pellentesque, mattis malesuada felis malesuada. Nullam a pellentesque elit. In facilisis lobortis lectus id pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque mi nec ipsum vulputate, sed elementum dolor iaculis. Nullam efficitur mauris sed diam facilisis interdum. Cras auctor tempor ipsum nec pretium. Vivamus a arcu mollis, vehicula mi ut, malesuada mauris.</p>
 <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum orci libero, lobortis efficitur dui nec, iaculis commodo tellus. Fusce sed imperdiet lectus. Etiam vitae sagittis leo, vel maximus lacus. Etiam nec scelerisque odio. Etiam eget viverra lectus. Fusce maximus, eros eget interdum consectetur, ligula felis suscipit ex, vitae posuere nisi enim a urna. Nam tincidunt, tortor vitae gravida egestas, mi leo suscipit nunc, id tempor leo sem quis lacus. Donec in eros vitae mi ullamcorper placerat vel eu sem.</p>
-          <hr>
-          <p><strong>i am pulled inside a helper</strong> : is from helpers/testHelper.js</p>
-          <img class="img-fluid" src="//images.ctfassets.net/aa6ykz6kypbo/3WPZXGeojTyK0NO9Yd4S47/c293fcb785cf31673e154c5b7068c707/beetle.jpg?w=1140&q=50&fit=fill" alt="Beetle image" title="Beetle image"/>
         </div>
       </div>
     </div>
-
-  <script type="text/javascript" src="test.80d9a2dc76dc4a964c77.js"></script></body>
+  <script type="text/javascript" src="test.edb8fbb0faf3bf1ea8ac.js"></script></body>
 </html>
