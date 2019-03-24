@@ -24,7 +24,7 @@ client
     entries.items.forEach((page)=>{
       const pageName = page.fields.pageName;
       let pageData = JSON.stringify(page.fields);
-      // Create the json page/s filenamed after the page/s, ie ./src/data/index.json for the index page
+      // Create the json page/s filenamed after the page/s, ie: ./src/data/index.json for the index page or ./src/data/about-us.json for About Us
       fs.writeFile('./src/data/'+pageName+'.json', pageData, 'utf8', (error) => {
         if(error){
           console.log('[write output]: could not write to ./scr/data/'+pageName+'.json: '+ error);
