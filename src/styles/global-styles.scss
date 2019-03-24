@@ -9,9 +9,22 @@ $fontColour: #383838;
 * {
   font-display: block;
 }
-nav {
+
+.navbar-dark {
   margin-bottom: 20px;
+  .navbar-nav {
+    .nav-link {
+      font-weight: 700;
+      color: #FFFFFF;
+      opacity: 1;
+      text-decoration: none;
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
 }
+
 body {
   background-color: #FFFFFF;
   color: $fontColour;
