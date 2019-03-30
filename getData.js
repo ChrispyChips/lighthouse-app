@@ -7,34 +7,45 @@ Here is how i call contentful for my page entries.
 var fs = require('fs');
 const axios = require('axios');
 const contentful = require("contentful");
+/*
+Create a file named .env in the root of directory and make sure it is added to git ignore in order to hide your keys from github
+The .env file will have just your keys /tokens etc as variables, example:
 
-const SPACE_ID = '';
-const ACCESS_TOKEN = '';
+---------
+SPACE_ID = 'aa133yk2344y3311';
+ACCESS_TOKEN = '634f45937ac7437asdf9a060e99dd8434d3bb5gg335656d5cb';
+---------
+
+You can then access your variables like this process.env.ACCESS_TOKEN
+*/
+require('dotenv/config');
+require('./.env');
+
 const client = contentful.createClient({
-  // This is the space ID. A space is like a project folder in Contentful terms
-  space: SPACE_ID,
-  // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-  accessToken: ACCESS_TOKEN
+  space:process.env.SPACE_ID,
+  accessToken:process.env.ACCESS_TOKEN
 });
-// This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
-console.log(client);
-client
-  .getEntries()
-  .then((entries)=>{
-    entries.items.forEach((page)=>{
-      const pageName = page.fields.pageName;
-      let pageData = JSON.stringify(page.fields);
-      // Create the json page/s filenamed after the page/s, ie: ./src/data/index.json for the index page or ./src/data/about-us.json for About Us
-      fs.writeFile('./src/data/'+pageName+'.json', pageData, 'utf8', (error) => {
-        if(error){
-          console.log('[write output]: could not write to ./scr/data/'+pageName+'.json: '+ error);
-        }else{
-          console.log('[write output]: successfully wrote to ./scr/data/'+pageName+'.json');
-        }
-      });
+
+client.getEntries().then((entries) => {
+  entries.items.forEach((page) => {
+    const pageName = page.fields.pageName;
+    let pageData = JSON.stringify(page.fields);
+    // Create the json page/s filenamed after the page/s, ie: ./src/data/index.json for the index page or ./src/data/about-us.json for About Us
+    fs.writeFile('./src/data/'+pageName+'.json', pageData, 'utf8', (error) => {
+      if(error){
+        console.log('[write output]: could not write to ./scr/data/'+pageName+'.json: '+ error);
+      }else{
+        console.log('[write output]: successfully wrote to ./scr/data/'+pageName+'.json');
+      }
     });
-  })
-  .catch(err => console.log(err));
+  });
+}).catch((error) => {
+  if(error==='404') {
+    console.log('could not access, check your SPACE_ID and ACCESS_TOKEN, or Internet connection.');
+  } else {
+    console.log(error);
+  }
+});
 
 /*
 For when i want to work locally i use chrome web server browser extension and point to my temp json file
