@@ -31,10 +31,13 @@ You can choose to build pages in two ways, after cloning the repo and installing
   2. Change your getData file to do the same based on your own API data.
   3. Make the relative .hbs, .scss and .js file for each page you have (src/templates/{examplePage}.hbs) and (src/styles/{examplePage}.hbs) and (src/scripts/{examplePage}.js)
   4. Notice how I require SCSS files inside the JS file example src/scripts/index.js, you should do the same for your pages
-  5. In your command line run: **npm run getData** this will run your api call in getData.js as well as clean the current src/data folder out, then run the localhost instance of built pages
-  6. UNTESTED ADVICE: If you are smart you can probably build the .js, .hbs and .scss files dynamically in getData.js based off your json structure
-  7. Adjust the src/manifest.json file to be more inline with your website / app. This is related to the service workers and Progressive Web App functionality.
-  8. Once finished developing your styles / functionality; In your command line run: **npm run build** which will output all files for you as to host anywhere you like. The files are found in /docs by default or can be change to /dist or any other output folder by editing the webpack.common.js file and webpack.prod.js file replacing all instances of /docs with /dist.
+  5. Create a file simply called '.env' in your root directory app/.env inside that file have your keys and access tokens ie:
+    SPACE_ID = 'ssdasd323423'
+    ACCESS_TOKEN = 'as34234235tfgdfgd4545345fdfh56'
+  6. In your command line run: **npm run getData** this will run your api call in getData.js as well as clean the current src/data folder out, then run the localhost instance of built pages
+  7. UNTESTED ADVICE: If you are smart you can probably build the .js, .hbs and .scss files dynamically in getData.js based off your json structure
+  8. Adjust the src/manifest.json file to be more inline with your website / app. This is related to the service workers and Progressive Web App functionality.
+  9. Once finished developing your styles / functionality; In your command line run: **npm run build** which will output all files for you as to host anywhere you like. The files are found in /docs by default or can be change to /dist or any other output folder by editing the webpack.common.js file and webpack.prod.js file replacing all instances of /docs with /dist.
 
 ## Technologies
 > Webpack / SCSS / Bootstrap / Handlebars / JS ES6 / AJAX / HTML / CSS

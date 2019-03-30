@@ -5,7 +5,6 @@ Both have corresponding .hbs template file (this is html written in html as usua
 Here is how i call contentful for my page entries.
 */
 var fs = require('fs');
-const axios = require('axios');
 const contentful = require("contentful");
 /*
 Create a file named .env in the root of directory and make sure it is added to git ignore in order to hide your keys from github
@@ -40,7 +39,7 @@ client.getEntries().then((entries) => {
     });
   });
 }).catch((error) => {
-  if(error==='404') {
+  if(error.status && error.status === '404') {
     console.log('could not access, check your SPACE_ID and ACCESS_TOKEN, or Internet connection.');
   } else {
     console.log(error);
@@ -48,7 +47,7 @@ client.getEntries().then((entries) => {
 });
 
 /*
-For when i want to work locally i use chrome web server browser extension and point to my temp json file
+For when I want to work locally i use chrome web server browser extension and point to my temp json file
 */
 // axios.get('http://127.0.0.1:8887/initialData.json').then((response) => {
 //   let data = response.data;
